@@ -1,5 +1,15 @@
-function greet(name: string): string {
-  return `Hello, ${name}!`;
-}
+import * as dotenv from 'dotenv';
+import path from 'path';
+import { Client, Events, GatewayIntentBits } from 'discord.js';
 
-console.log(greet('TypeScript'));
+dotenv.config({
+  path: path.resolve(__dirname, '../.env'),
+});
+
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+client.once(Events.ClientReady, (readyClient) => {
+  console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+});
+
+client.login(process.env.DISCORD_TOKEN);
