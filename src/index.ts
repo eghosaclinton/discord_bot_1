@@ -11,6 +11,7 @@ declare module 'discord.js' {
 }
 
 const app = express();
+const port = 3001;
 
 app.post('/webhook', (_req, res) => {
   res.send('hello, world');
@@ -65,3 +66,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
+app.listen(port, () => {
+  console.log(`App listening to port: ${port}`);
+});
