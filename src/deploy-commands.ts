@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import path from 'path';
 import { REST, Routes } from 'discord.js';
-import { Command, commands } from './commands/utility';
+import { commands } from './commands/utility';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),

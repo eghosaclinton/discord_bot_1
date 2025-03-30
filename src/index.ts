@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+import express from 'express';
 import path from 'path';
 import { Command, commands } from './commands/utility';
 import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
@@ -8,6 +9,12 @@ declare module 'discord.js' {
     commands: Collection<string, Command>;
   }
 }
+
+const app = express();
+
+app.post('/webhook', (_req, res) => {
+  res.send('hello, world');
+});
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
