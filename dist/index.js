@@ -42,8 +42,9 @@ const path_1 = __importDefault(require("path"));
 const utility_1 = require("./commands/utility");
 const discord_js_1 = require("discord.js");
 const app = (0, express_1.default)();
+const port = 3001;
 app.post('/webhook', (_req, res) => {
-    res.send("hello, world");
+    res.send('hello, world');
 });
 dotenv.config({
     path: path_1.default.resolve(__dirname, '../.env'),
@@ -89,3 +90,6 @@ client.on(discord_js_1.Events.InteractionCreate, async (interaction) => {
     }
 });
 client.login(process.env.DISCORD_TOKEN);
+app.listen(port, () => {
+    console.log(`App listening to port: ${port}`);
+});
