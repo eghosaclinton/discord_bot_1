@@ -13,7 +13,7 @@ declare module 'discord.js' {
 const app = express();
 const port = 3001;
 
-app.post('/webhook', (_req, res) => {
+app.get('/ping-me', (_req, res) => {
   res.send('hello, world');
 });
 
