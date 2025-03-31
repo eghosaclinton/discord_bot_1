@@ -1,5 +1,4 @@
 import * as dotenv from 'dotenv';
-import express from 'express';
 import path from 'path';
 import { Command, commands } from './commands/utility';
 import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
@@ -12,14 +11,6 @@ declare module 'discord.js' {
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
-});
-
-const app = express();
-const port = 3001;
-
-app.get('/ping', (_req, res) => {
-  console.log('Received ping, staying alive!');
-  res.status(200).send('Pong!');
 });
 
 let client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -67,7 +58,3 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.login(process.env.DISCORD_TOKEN);
-
-app.listen(port, () => {
-  console.log(`App listening to port: ${port}`);
-});

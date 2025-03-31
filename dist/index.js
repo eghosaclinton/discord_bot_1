@@ -37,18 +37,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv"));
-const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const utility_1 = require("./commands/utility");
 const discord_js_1 = require("discord.js");
 dotenv.config({
-    path: path_1.default.resolve(__dirname, '../.env'),
-});
-const app = (0, express_1.default)();
-const port = 3001;
-app.get('/ping', (_req, res) => {
-    console.log('Received ping, staying alive!');
-    res.status(200).send('Pong!');
+    path: path_1.default.resolve(__dirname, './.env'),
 });
 let client = new discord_js_1.Client({ intents: [discord_js_1.GatewayIntentBits.Guilds] });
 client.commands = new discord_js_1.Collection();
@@ -91,6 +84,3 @@ client.on(discord_js_1.Events.InteractionCreate, async (interaction) => {
     }
 });
 client.login(process.env.DISCORD_TOKEN);
-app.listen(port, () => {
-    console.log(`App listening to port: ${port}`);
-});
