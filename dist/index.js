@@ -41,13 +41,14 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const utility_1 = require("./commands/utility");
 const discord_js_1 = require("discord.js");
-const app = (0, express_1.default)();
-const port = 3001;
-app.get('/ping-me', (_req, res) => {
-    res.send('hello, world');
-});
 dotenv.config({
     path: path_1.default.resolve(__dirname, '../.env'),
+});
+const app = (0, express_1.default)();
+const port = 3001;
+app.get('/ping', (_req, res) => {
+    console.log('Received ping, staying alive!');
+    res.status(200).send('Pong!');
 });
 let client = new discord_js_1.Client({ intents: [discord_js_1.GatewayIntentBits.Guilds] });
 client.commands = new discord_js_1.Collection();
