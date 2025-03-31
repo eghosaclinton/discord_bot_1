@@ -10,15 +10,16 @@ declare module 'discord.js' {
   }
 }
 
+dotenv.config({
+  path: path.resolve(__dirname, '../.env'),
+});
+
 const app = express();
 const port = 3001;
 
-app.get('/ping-me', (_req, res) => {
-  res.send('hello, world');
-});
-
-dotenv.config({
-  path: path.resolve(__dirname, '../.env'),
+app.get('/ping', (_req, res) => {
+  console.log('Received ping, staying alive!');
+  res.status(200).send('Pong!');
 });
 
 let client = new Client({ intents: [GatewayIntentBits.Guilds] });
