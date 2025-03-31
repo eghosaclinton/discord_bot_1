@@ -41,7 +41,7 @@ const path_1 = __importDefault(require("path"));
 const utility_1 = require("./commands/utility");
 const discord_js_1 = require("discord.js");
 dotenv.config({
-    path: path_1.default.resolve(__dirname, './.env'),
+    path: path_1.default.resolve(__dirname, '../.env'),
 });
 let client = new discord_js_1.Client({ intents: [discord_js_1.GatewayIntentBits.Guilds] });
 client.commands = new discord_js_1.Collection();
